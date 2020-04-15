@@ -1,0 +1,35 @@
+# This is Git's per-user configuration file.
+[user]
+    name = Jeremy Savarin
+    email = jeremy.savarin@protonmail.com
+[color]
+    ui = auto
+[alias]
+    # List current aliases
+    aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+    # Shortcuts
+    ci = commit
+    co = checkout
+    st = status
+    lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+    # Remove file(s) from Git but not from disk
+    untrack = rm --cache --
+[log]
+    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+    abbrevCommit = true
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+[merge]
+    tool = meld
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[status]
+    submoduleSummary = true
+[core]
+    editor = "emacs -q"
+[commit]
+    template = ~/.git-commit-template.txt
